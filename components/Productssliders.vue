@@ -9,17 +9,18 @@
           md="3"
           lg="3"
           xl="3"
-          v-for="item in 10"
-          :key="item"
+          v-for="item in products"
+          :key="item.id"
         >
+        <nuxt-link :to="{name:'Product-id' , params:{id:item.id}}">
           <v-card class="mt-5 boxCard" width="100%" height="350" elevation="2">
-            <v-img :src="src" contain aspect-ratio="1.7" height="70%"> </v-img>
+            <v-img :src="item.image" contain aspect-ratio="1.7" height="70%"> </v-img>
 
             <v-card-title class="titleCard pb-0 mb-n2"
-              >Cafe Badilico</v-card-title
+              >{{item.name}}</v-card-title
             >
             <v-card-text class="btnCard">
-              <div class="text-subtitle-1">ریال 3000,000</div>
+              <div class="text-subtitle-1">ریال {{item.price}}</div>
               <v-spacer></v-spacer>
               <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
@@ -53,6 +54,7 @@
               </v-tooltip>
             </v-card-text>
           </v-card>
+        </nuxt-link>
         </v-col>
       </Flickity>
     </v-row>
@@ -74,6 +76,11 @@ export default {
       },
       src: require("../assets/png/1.png"),
     };
+  },
+  computed:{
+    products(){
+      return this.$store.state.product.products
+    }
   },
   watch: {},
 };

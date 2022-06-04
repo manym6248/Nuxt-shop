@@ -3,8 +3,8 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - s1',
-    title: 's1',
+    titleTemplate: 'مغان شوز',
+    title: 'مغان شوز',
     htmlAttrs: {
       lang: 'fa'
     },
@@ -23,6 +23,8 @@ export default {
   css: [
     '@/assets/css/main.css',
     '@/assets/scss/main.scss',
+  
+    
     
   ],
   styleResources: {
@@ -31,7 +33,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/VueFlickity.js', ssr: false }
+    { src: '~/plugins/VueFlickity.js', mode:'client'  },
+  
+  
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

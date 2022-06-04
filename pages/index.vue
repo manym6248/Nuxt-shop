@@ -10,31 +10,57 @@
                   rowcarousel
                   fill-height
                   my-0
-                  mx-lg-10 mx-xl-10 mx-md-10 mx-sm-10 mx-0
+                  mx-lg-10 mx-xl-10 mx-md-10  mx-0
                 "
                 align="center"
                 justify="center"
               >
-                <v-col cols="12" xl="7" lg="7" md="7" sm="7">
-                  <h1 class="carousel-titel mb-10">{{ item.title }}</h1>
-                  <p class="carousel-text text-justify">
-                    {{ item.text }}
-                  </p>
-                  <v-row justify="end" class="ma-0">
-                    <v-btn
-                      elevation="3"
-                      class="carousel-btn mt-10 ml-5 primary rounded-xl"
-                      x-large
-                      >بریم برای خرید</v-btn
-                    >
-                  </v-row>
+                <v-col cols="10" xl="7" lg="7" md="7" sm="10">
+                  <v-img
+                     v-if="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs"
+                    class="carousel-img2 mt-0 mt-sm-12"
+                    :src="item.src"
+                    height="100%"
+                    width="100%"
+                    contain
+                  >
+                    <h1 class="carousel-titel mb-10 mt-16  pa-3 rounded-xl" style="background-color:#00000066;">{{ item.title }}</h1>
+                    <p class="carousel-text text-justify pa-3 rounded-xl" style="background-color:#00000066;">
+                      {{ item.text }} 
+                    </p>
+
+                    <v-row justify="end" class="ma-0">
+                      <v-btn
+                        elevation="3"
+                        class="carousel-btn mt-10 ml-5 primary rounded-xl"
+                        x-large
+                        >بریم برای خرید</v-btn
+                      >
+                    </v-row>
+                  </v-img>
+                  <div   v-if="!$vuetify.breakpoint.sm && !$vuetify.breakpoint.xs">
+
+                    <h1 class="carousel-titel mb-10  ">{{ item.title }}</h1>
+                    <p class="carousel-text text-justify" >
+                      {{ item.text }}
+                    </p>
+
+                    <v-row justify="end" class="ma-0">
+                      <v-btn
+                        elevation="3"
+                        class="carousel-btn mt-10 ml-5 primary rounded-xl"
+                        x-large
+                        >بریم برای خرید</v-btn
+                      >
+                    </v-row>
+                  </div>
                 </v-col>
                 <v-col
                   lg="5"
                   xl="5"
                   md="5"
                   sm="5"
-                  v-if="!$vuetify.breakpoint.xs"
+                  v-if="!$vuetify.breakpoint.xs && !$vuetify.breakpoint.sm"
                 >
                   <img class="carousel-img" :src="item.src" />
                 </v-col>
@@ -44,6 +70,7 @@
         </v-carousel-item>
       </v-carousel>
     </div>
+  
     <v-container>
       <article class="mt-10">
         <div class="text1">
@@ -58,43 +85,39 @@
     </v-container>
     <article>
       <v-parallax dark :src="src" height="300">
-        <v-row>
-          <v-col cols="6" class="pa-0">
-        <div class="bigcard2">
-             
-                <v-container>
-                  <v-row align="center" justify="center">
-                    <p class="pa-10 pb-0 mt-0">
-                      در ایام تابستون دوست دارید کیف و کفشی مناسب با همین فصل را
-                      خریداری کنید. فروشگاه ما، با مدل ها و طرح های متنوع خود،
-                      شما را در خرید یاری خواهد کرد و بهترینِ آن چرا که
-                      میخواستید تقدیم حضورتان می کند.
-                    </p>
-                    <v-btn color="primary" class="rounded-xl mt-0"
-                      >بریم برای خرید</v-btn
-                    >
-                  </v-row>
-                </v-container>
-             
+        <v-row align="center" class="ma-0 mt-n3">
+          <v-col cols="12" lg="6" md="6" xl="6" sm="12" class="pa-0">
+            <div class="bigcard2">
+              <v-row align="center" justify="center" class="mt-0">
+                <p class="pa-10 pb-0 mt-0">
+                  در ایام تابستون دوست دارید کیف و کفشی مناسب با همین فصل را
+                  خریداری کنید. فروشگاه ما، با مدل ها و طرح های متنوع خود، شما
+                  را در خرید یاری خواهد کرد و بهترینِ آن چرا که میخواستید تقدیم
+                  حضورتان می کند.
+                </p>
+                <v-btn color="primary" class="rounded-xl mt-0"
+                  >بریم برای خرید</v-btn
+                >
+              </v-row>
             </div>
           </v-col>
-          <v-col cols="6" class="pa-0">
+          <v-col
+            cols="6"
+            class="pa-0"
+            v-if="!$vuetify.breakpoint.sm && !$vuetify.breakpoint.xs"
+          >
             <div class="bigcard2">
-             
-                <v-container>
-                  <v-row align="center" justify="center">
-                    <p class="pa-10 pb-0 mt-0">
-                      در ایام تابستون دوست دارید کیف و کفشی مناسب با همین فصل را
-                      خریداری کنید. فروشگاه ما، با مدل ها و طرح های متنوع خود،
-                      شما را در خرید یاری خواهد کرد و بهترینِ آن چرا که
-                      میخواستید تقدیم حضورتان می کند.
-                    </p>
-                    <v-btn color="primary" class="rounded-xl mt-0"
-                      >بریم برای خرید</v-btn
-                    >
-                  </v-row>
-                </v-container>
-             
+              <v-row align="center" justify="center" class="mt-0">
+                <p class="pa-10 pb-0 mt-0">
+                  در ایام تابستون دوست دارید کیف و کفشی مناسب با همین فصل را
+                  خریداری کنید. فروشگاه ما، با مدل ها و طرح های متنوع خود، شما
+                  را در خرید یاری خواهد کرد و بهترینِ آن چرا که میخواستید تقدیم
+                  حضورتان می کند.
+                </p>
+                <v-btn color="primary" class="rounded-xl mt-0"
+                  >بریم برای خرید</v-btn
+                >
+              </v-row>
             </div>
           </v-col>
         </v-row>
@@ -113,6 +136,7 @@
         </div>
       </article>
     </v-container>
+       
     <article>
       <v-parallax dark :src="src" height="300">
         <v-container class="container">
@@ -152,15 +176,17 @@
         </v-container>
       </v-parallax>
     </article>
+   
   </div>
 </template>
 
 <script>
 import Productssliders from "~/components/Productssliders.vue";
 
-export default {
-  components: { Productssliders },
 
+
+export default {
+  components: { Productssliders},
   name: "IndexPage",
   data() {
     return {
@@ -199,9 +225,13 @@ export default {
       ],
     };
   },
+ 
 };
 </script>
 <style lang="scss" >
+
+
+
 .text1 {
   h2,
   p {
@@ -209,22 +239,13 @@ export default {
   }
 }
 
-
 .bigcard2 {
-  .container {
-    height: 100%;
-    .row {
-      height: 100%;
-      p {
-        color: beige;
-        text-align: center;
-        
-      }
+  .row {
+    p {
+      color: beige;
+      text-align: center;
     }
   }
-  height: 400px;
-  width: 100%;
-
 }
 
 .slider1 {

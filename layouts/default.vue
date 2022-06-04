@@ -2,6 +2,7 @@
   <v-app dark>
     <v-navigation-drawer
       v-model="rightDrawer"
+      color="primary"
       :right="right"
       temporary
       fixed
@@ -9,8 +10,8 @@
     >
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="text-h6"> Application </v-list-item-title>
-          <v-list-item-subtitle> subtext </v-list-item-subtitle>
+          <v-list-item-title class="text-h6"> مغان شوز </v-list-item-title>
+          <v-list-item-subtitle> راهی نو </v-list-item-subtitle>
         </v-list-item-content>
         <v-btn icon @click.stop="rightDrawer = !rightDrawer">
           <v-icon>mdi-menu</v-icon>
@@ -37,70 +38,86 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar class="px-3 py-0"  fixed elevation="0" :class = " headerbar ? 'color' : 'transparent' ">
-      <v-toolbar-title  v-text="title" />
+    <v-app-bar
+      class="px-3 py-0"
+      fixed
+      elevation="0"
+      :class=" headerbar || this.$route.path != '/' ? 'color' : 'transparent'"
+    >
+      <v-toolbar-title v-text="title" />
       <ul
         v-if="!$vuetify.breakpoint.sm && !$vuetify.breakpoint.xs"
         class="items mr-3"
       >
         <li class="item">
-          <nuxt-link to="/">صحفه اصلی</nuxt-link>
+          <nuxt-link to="/" exact>صحفه اصلی</nuxt-link>
         </li>
         <li class="item">
-          <nuxt-link to="/">فروشگاه</nuxt-link>
+          <nuxt-link to="/shop">فروشگاه</nuxt-link>
         </li>
         <li class="item">
-          <nuxt-link to="/">درباره ما</nuxt-link>
+          <nuxt-link to="/inspire">درباره ما</nuxt-link>
         </li>
       </ul>
       <v-spacer />
-      <div class="search-box" v-if="!$vuetify.breakpoint.sm && !$vuetify.breakpoint.xs">
-          <input class="input" type="text" placeholder="search">
+      <div
+        class="search-box"
+        v-if="!$vuetify.breakpoint.sm && !$vuetify.breakpoint.xs"
+      >
+        <input class="input" type="text" placeholder="search" />
         <v-btn icon color="primary" small>
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
       </div>
-       <v-btn color="white" icon>
+      <v-btn color="white" icon>
         <v-icon>mdi-cart-outline</v-icon>
       </v-btn>
-      <v-btn color="white" icon v-if="!$vuetify.breakpoint.sm && !$vuetify.breakpoint.xs">
+      <v-btn
+        color="white"
+        icon
+        v-if="!$vuetify.breakpoint.sm && !$vuetify.breakpoint.xs"
+      >
         login
       </v-btn>
 
       <v-btn color="white" v-else icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
-     
     </v-app-bar>
     <v-main>
       <Nuxt />
     </v-main>
 
-    <v-footer  class="px-0 pb-0">
+    <v-footer class="px-0 pb-0">
       <footer-box></footer-box>
     </v-footer>
   </v-app>
 </template>
 
 <script>
-import FooterBox from '~/components/FooterBox.vue';
+import FooterBox from "~/components/FooterBox.vue";
 export default {
   components: { FooterBox },
   name: "DefaultLayout",
   data() {
     return {
       drawer: false,
-      headerbar:false,
+      headerbar: false,
 
       items: [
         {
           icon: "mdi-apps",
-          title: "Welcome",
+          title: "صحفه اصلی",
           to: "/",
         },
         {
           icon: "mdi-chart-bubble",
-          title: "Inspire",
+          title: "فروشگاه",
+          to: "/shop",
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "درباره ما",
           to: "/inspire",
         },
       ],
@@ -110,33 +127,44 @@ export default {
       title: "مغان شوز",
     };
   },
-  mounted(){
-  
-    window.addEventListener('scroll' , ()=>{
-      if(scrollY > 50){
-       this.headerbar = true;
-       
+  mounted() {
+    window.addEventListener("scroll", () => {
+      if (scrollY > 50) {
+        this.headerbar = true;
+      } else {
+        this.headerbar = false;
       }
-      else{
-         this.headerbar = false;
-      }
-
-    })
+    });
+  },
+  created(){
+    console.log(this.$route.path);
   }
 };
 </script>
 <style lang="scss" scoped >
-
 @import "../assets/variables.scss";
 
-.v-footer{
+.v-navigation-drawer{
+  *{
+    color:beige;
+  }
+
+  .v-list-item{
+    *,.v-list-item__subtitle{
+      color:beige;
+    }
+
+  }
+}
+
+.v-footer {
   background-color: $color-primary3 !important;
 }
 
-.color{
+.color {
   background-color: #9b27b0 !important;
 }
-.v-toolbar__title{
+.v-toolbar__title {
   font-weight: bold;
   color: white;
 }
@@ -147,11 +175,13 @@ export default {
     a {
       color: white;
       padding: 12px;
-    }
     &:hover {
-      a {
-        color: indigo accent-4 !important;
-      }
+     color: $color-text;
+      
+    }
+    }
+    .nuxt-link-active{
+      color:$color-text ;
     }
   }
 }
@@ -162,7 +192,7 @@ export default {
   height: 35px;
   display: flex;
   flex-direction: row;
- 
+
   border-radius: 50px;
   position: relative;
   &:hover {
@@ -171,13 +201,13 @@ export default {
       display: block;
     }
   }
-  &:focus{
+  &:focus {
     width: 200px;
-     .input {
+    .input {
       display: block;
     }
   }
-    
+
   .v-btn {
     position: absolute;
     left: 3px;
@@ -186,7 +216,6 @@ export default {
   .input {
     color: #000;
     position: absolute;
- 
     display: none;
     height: 100%;
     border: none;

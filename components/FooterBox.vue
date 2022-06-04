@@ -58,13 +58,13 @@
       </v-list-group>
     </v-list>
         </div>
-        <ul class="items">
+        <ul class="items pl-0">
           <li class="item">
             <nuxt-link to="/">در خبر نامه سایت عضو شوید.</nuxt-link>
           </li>
           <div class="search-box2 mt-3">
             <input class="input" type="text" placeholder="ایمیلتو بزن" />
-            <v-btn color="primary" small class="rounded-xl">
+            <v-btn color="primary"  class="rounded-xl">
               <v-icon>mdi-send-circle</v-icon>
             </v-btn>
           </div>
@@ -91,11 +91,11 @@
         آماده خدمت رسانی به هم وطنان عزیز در سراسر ایران باشیم.
       </p>
     </v-container>
-    <div class="end">
+    <div class="end pt-xl-3 pt-lg-3 pt-md-3">
       <v-row justify="center"  class="ma-0">
         <v-col cols="12" lg="5" md="6" xl="5" class="pa-0 pt-2 pr-xl-16 pr-lg-16 pr-md-5 pr-4 ">
           <span
-            >کلیه حقوق این سایت متعلق به فروشگاه آنلاین مغان شوز می باشد
+            >کلیه حقوق این سایت متعلق به فروشگاه مغان شوز می باشد
           </span>
         </v-col  >
         <v-col class="pa-0 pt-2 pr-16" lg="4" md="6" xl="4"  v-if="!$vuetify.breakpoint.sm && !$vuetify.breakpoint.xs"  >
@@ -153,7 +153,7 @@ export default {
   width: 100%;
   .end {
     width: 100%;
-    height: 40px;
+    height: 65px;
     background-color: $color-primary2;
     span{
         color:beige;
@@ -188,7 +188,7 @@ p {
     background-color: azure;
     margin-left: 12px;
     width: 100%;
-    height: 35px;
+    height: 45px;
     display: flex;
     flex-direction: row;
     border-radius: 50px;
@@ -197,7 +197,7 @@ p {
     .v-btn {
       position: absolute;
       left: 3px;
-      bottom: 3px;
+      bottom: 5px;
     }
     .input {
       color: #000;

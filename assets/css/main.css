@@ -1,5 +1,6 @@
 @import url(./fontiran.css); /* لینک فایلی که وظیفه بارگذاری فونت ها را برعهده دارد */
 @import url(./_flickity.css);
+@import url(../../node_modules/vue-inner-image-zoom/lib/vue-inner-image-zoom.css);
 
 ul {
     list-style: none;
